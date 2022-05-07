@@ -1,5 +1,5 @@
 import {colorBar, sleep, shuffle, swap} from './utils.js';
-import {getSpeed} from './sort.js';
+import {getSpeed} from './canvas.js';
 
 let itrColor = '#d7263d';
 let mscColor = '#1ad2d9';
