@@ -1,0 +1,138 @@
+import {sleep, colorBar, swap, shuffle} from './utils.js';
+import {bogoSort, bubbleSort, selectionSort, quickSort, insertionSort, isSorted} from './algorithms.js'
+
+document.getElementById('algorithm-select').value = 'bubbleSort';
+document.getElementById('size').value = 20;
+document.getElementById('speed').value = 1000;
+
+let ctx = document.getElementById('chart').getContext('2d');
+let chart = new Chart(ctx);
+let array = [];
+let labels = [];
+let colors = [];
+let size = 20;
+let speed = 1000;
+let shuffling = false;
+
+document.getElementById('algorithm-select').addEventListener('input', setSort);
+document.getElementById('shuffle').addEventListener('click', shuffleArray);
+document.getElementById('sort').addEventListener('click', sortArray);
+document.getElementById('size').addEventListener('input', resizeArray);
+document.getElementById('speed').addEventListener('input', setSpeed);
+
+init();
+
+function init() {
+	array = [];
+	labels = [];
+	colors = [];
+	for (let i = 1; i <= size; i++) {
+		array.push(i);
+		labels.push('');
+		colors.push('#ffffff');
+	}
+
+	chart.destroy();
+
+	let config = {
+		type: 'bar',
+		data: {
+			labels: labels,
+			datasets: [{
+				backgroundColor: colors,
+				data: array,
+				barPercentage: 1.0,
+				categoryPercentage: 1.0
+			}]
+		},
+		options: {
+			responsive: true,
+			animations: {
+				colors: {duration: 0}
+			},
+			plugins: {
+				legend: {display: false}, 
+				tooltip: {enabled: false}
+			},
+			scales: {
+				x: {display: false}, 
+				y: {display: false}
+			},
+			hover: {
+				mode: null
+			}
+		}
+	};
+
+	chart = new Chart(ctx, config);
+}
+
+function shuffleArray() {
+	shuffle(chart);
+}
+
+function resizeArray() {
+	size = this.value;
+	init();
+}
+
+function setSpeed() {
+	speed = 2000 - this.value;
+}
+
+function setSort() {
+	let selection = document.getElementById('algorithm-select');
+	document.getElementById('algorithm-name').innerHTML = selection.options[selection.selectedIndex].text;
+}
+
+function getSpeed() {
+	return speed;
+}
+
+function getArray() {
+	return array;
+}
+
+function getColors() {
+	return colors;
+}
+
+function disableInteract(disable) {
+	document.getElementById('algorithm-select').disabled = disable;
+	document.getElementById('size').disabled = disable;
+	document.getElementById('shuffle').disabled = disable;
+	document.getElementById('sort').disabled = disable;
+	if (disable) {
+		chart.options.animation.duration = 1000;
+	}
+
+	chart.update();
+}
+
+async function sortArray () {
+	disableInteract(true);
+	let algorithm = document.getElementById('algorithm-select').value;
+
+	switch(algorithm) {
+		case 'bogoSort':
+			await bogoSort(chart, array);
+			break;
+		case 'bubbleSort':
+			await bubbleSort(chart, array);
+			break;
+		case 'selectionSort':
+			await selectionSort(chart, array);
+			break;
+		case 'quickSort':
+			await quickSort(chart, array, 0, size-1);
+			break;
+		case 'insertionSort':
+			await insertionSort(chart, array);
+			break;
+	}
+
+	await isSorted(array);
+	disableInteract(false);
+}
+
+export {getSpeed, getArray, getColors};
