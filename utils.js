@@ -1,4 +1,4 @@
-import {getSpeed, getArray, getColors} from './sort.js';
+import {getSpeed, getArray, getColors} from './canvas.js';
 
 let shuffling = false;
 
