@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <p id="algorithm-name">Bubble Sort</p>
+        <canvas id="chart"></canvas>
+        <label for="algorithm"></label>
+        <select name="algorithms" id="algorithm-select">
+            <option value="bogoSort">Bogo Sort</option>
+            <option value="bubbleSort">Bubble Sort</option>
+            <option value="selectionSort">Selection Sort</option>
+            <option value="quickSort">Quick Sort</option>
+            <option value="insertionSort">Insertion Sort</option>
+        </select>
+        <input id="size" type="number">
+        <button id="shuffle">Shuffle</button>
+        <button id="sort">Sort</button>
+        <input id="speed" type="range" min="0" max="2000">
+        <button id="reset" onClick="window.location.reload();">Reset</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script type = "module" src="canvas.js"></script>
+</body>
+</html>
