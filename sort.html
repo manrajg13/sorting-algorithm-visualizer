@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="display: table; margin: auto; background-color: #02040f;" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
     <title>Sorting Visualizer</title>
-    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="container">
-        <p id="algorithm-name">Bubble Sort</p>
-        <canvas id="chart"></canvas>
+    <div class="container" style="margin-top: 200px; text-align: center;">
+        <p id="algorithm-name" style="color: #ffffff; font-family: Verdana; font-size: 20px;">Bubble Sort</p>
+        <canvas id="chart" style="width: 600px;"></canvas>
         <label for="algorithm"></label>
         <select name="algorithms" id="algorithm-select">
             <option value="bogoSort">Bogo Sort</option>
@@ -19,10 +18,10 @@
             <option value="quickSort">Quick Sort</option>
             <option value="insertionSort">Insertion Sort</option>
         </select>
-        <input id="size" type="number">
+        <input id="size" type="number" style="width: 60px;">
         <button id="shuffle">Shuffle</button>
         <button id="sort">Sort</button>
-        <input id="speed" type="range" min="0" max="2000">
+        <input id="speed" type="range" min="0" max="2000" style="width:100px;">
         <button id="reset" onClick="window.location.reload();">Reset</button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
