@@ -5,6 +5,7 @@ let itrColor = '#d7263d';
 let mscColor = '#1ad2d9';
 let dftColor = '#ffffff';
 
+// async used to pause processes to display iteration/general change visuals
 async function bogoSort (chart, array) {
     var sorted = false;
 
@@ -25,12 +26,18 @@ async function bogoSort (chart, array) {
 
 async function bubbleSort (chart, array) {
     for (let i = 0; i < array.length; i++) {
+        let swapped = false;
         for (let j = 0; j < array.length-i-1; j++) {
             await colorBar(chart, j, itrColor, 1);
             if (array[j] > array[j + 1]) {
                 await swap(chart, j, j+1);
                 await sleep(chart);
+                swapped = true;
             }
+        }
+
+        if (!swapped) {
+            break;
         }
     }
 }

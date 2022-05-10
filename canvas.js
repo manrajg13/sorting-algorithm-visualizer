@@ -1,6 +1,7 @@
 import {sleep, colorBar, swap, shuffle} from './utils.js';
 import {bogoSort, bubbleSort, selectionSort, quickSort, insertionSort, isSorted} from './algorithms.js'
 
+// set default values for chart inputs
 document.getElementById('algorithm-select').value = 'bubbleSort';
 document.getElementById('size').value = 20;
 document.getElementById('speed').value = 1000;
@@ -14,6 +15,7 @@ let size = 20;
 let speed = 1000;
 let shuffling = false;
 
+// event listeners
 document.getElementById('algorithm-select').addEventListener('input', setSort);
 document.getElementById('shuffle').addEventListener('click', shuffleArray);
 document.getElementById('sort').addEventListener('click', sortArray);
@@ -22,6 +24,8 @@ document.getElementById('speed').addEventListener('input', setSpeed);
 
 init();
 
+// create array of a given size colored white, destroy chart and
+// create new chart with new data
 function init() {
 	array = [];
 	labels = [];
@@ -48,10 +52,10 @@ function init() {
 		options: {
 			responsive: true,
 			animations: {
-				colors: {duration: 0}
+				colors: {duration: 0}		// disables color transition animations
 			},
 			plugins: {
-				legend: {display: false}, 
+				legend: {display: false}, 	// disables x-axis labels and hover tooltip
 				tooltip: {enabled: false}
 			},
 			scales: {
@@ -97,6 +101,8 @@ function getColors() {
 	return colors;
 }
 
+// need to disable buttons and sliders because changes to arrays
+// can make things pretty messy
 function disableInteract(disable) {
 	document.getElementById('algorithm-select').disabled = disable;
 	document.getElementById('size').disabled = disable;
