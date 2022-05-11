@@ -57,4 +57,33 @@ function shuffle(chart) {
 	shuffling = false;
 }
 
-export {sleep, colorStep, colorBar, swap, shuffle};
+function setSort() {
+	let selection = document.getElementById('algorithm-select');
+	let btn = document.getElementById('show-steps');
+	document.getElementById('algorithm-name').innerHTML = selection.options[selection.selectedIndex].text;
+
+	switch(selection.value) {
+		case "bogoSort":
+			document.getElementById('step1').innerHTML = '\u2003while sorted = false:<br>' + 
+														 '\u2003\u2003\u2003shuffle array';
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003if array is sorted:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003sorted := true<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003break';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003else:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003sorted := false';
+			document.getElementById('step4').innerHTML = '';
+			break;
+		case "bubbleSort":
+			document.getElementById('step1').innerHTML = '\u2003for i := 0 to sizeOfArray:<br>' +
+														 '\u2003\u2003\u2003swapped = false';
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for j := 0 to sizeOfArray - i - 1:';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003if array[j] > array[j+1]:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swap (array[j], array[j+1])<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swapped = true';
+			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003if swapped = false:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003break';
+			break;
+	}
+}
+
+export {sleep, colorStep, colorBar, swap, shuffle, setSort};

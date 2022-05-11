@@ -9,15 +9,20 @@ let dftColor = '#ffffff';
 async function bogoSort (chart, array) {
     var sorted = false;
     while(!sorted) {
+        colorStep(1)
         shuffle(chart);
         await sleep(chart);                                 // sleep after each shuffle
         for(var i = 1; i < array.length; i++){
             if (array[i-1] > array[i]) {
                 sorted = false;
+                colorStep(3);
+                await sleep(chart);
                 break;
             }
             else {
                 sorted = true;
+                colorStep(2);
+                chart.update();
             }
         }
     }
