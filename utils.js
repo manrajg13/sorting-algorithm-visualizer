@@ -8,6 +8,16 @@ function sleep (chart) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function colorStep(step) {
+	for (let i = 1; i < 7; i++) {
+		document.getElementById("step" + i.toString()).style.backgroundColor = "#02040f";
+    	document.getElementById("step" + i.toString()).style.color = "white";
+	}
+
+	document.getElementById("step" + step).style.backgroundColor = "white";
+    document.getElementById("step" + step).style.color = "#02040f";
+}
+
 async function colorBar(chart, i, color, mode) {
 	let colors = getColors();
 	colors[i] = color;
@@ -47,4 +57,4 @@ function shuffle(chart) {
 	shuffling = false;
 }
 
-export {sleep, colorBar, swap, shuffle};
+export {sleep, colorStep, colorBar, swap, shuffle};

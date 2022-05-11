@@ -1,4 +1,4 @@
-import {colorBar, sleep, shuffle, swap} from './utils.js';
+import {sleep, colorStep, colorBar, shuffle, swap} from './utils.js';
 import {getSpeed} from './canvas.js';
 
 let itrColor = '#d7263d';
@@ -8,10 +8,9 @@ let dftColor = '#ffffff';
 // async used to pause processes to display iteration/general change visuals
 async function bogoSort (chart, array) {
     var sorted = false;
-
     while(!sorted) {
         shuffle(chart);
-        await sleep(chart);
+        await sleep(chart);                                 // sleep after each shuffle
         for(var i = 1; i < array.length; i++){
             if (array[i-1] > array[i]) {
                 sorted = false;
@@ -27,9 +26,13 @@ async function bogoSort (chart, array) {
 async function bubbleSort (chart, array) {
     for (let i = 0; i < array.length; i++) {
         let swapped = false;
+        colorStep(1);
+        await sleep(chart);
         for (let j = 0; j < array.length-i-1; j++) {
-            await colorBar(chart, j, itrColor, 1);
+            colorStep(2);
+            await colorBar(chart, j, itrColor, 1);          // color each inner iteration
             if (array[j] > array[j + 1]) {
+                colorStep(3);
                 await swap(chart, j, j+1);
                 await sleep(chart);
                 swapped = true;
@@ -37,6 +40,8 @@ async function bubbleSort (chart, array) {
         }
 
         if (!swapped) {
+            colorStep(4);
+            await sleep(chart);
             break;
         }
     }
@@ -45,21 +50,20 @@ async function bubbleSort (chart, array) {
 async function selectionSort(chart, array) {
     for(let i = 0; i < array.length; i++) {
         let min = i;
-        colorBar(chart, min, mscColor, 0);
+        colorBar(chart, min, mscColor, 0);                  // color each outer iteration
         for(let j = i+1; j < array.length; j++){
-            await colorBar(chart, j, itrColor, 1);
+            await colorBar(chart, j, itrColor, 1);          // color each inner iteration going in reverse
             if(array[j] < array[min]) {
-                colorBar(chart, min, dftColor, 0);
+                colorBar(chart, min, dftColor, 0);          // recolor min value
                 min=j;
                 colorBar(chart, min, mscColor, 0);
             }
-            colorBar(chart, min, mscColor, 0);
         }
         if (min != i) {
             await swap(chart, i, min);
             await sleep(chart);
         }
-        colorBar(chart, min, dftColor, 0);
+        colorBar(chart, min, dftColor, 0);                  // reset min color
     }
 }
 
@@ -88,7 +92,7 @@ async function quickSort(chart, array, left, right) {
     var index;
     if (array.length > 1) {
         index = await partition(chart, array, left, right);
-        colorBar(chart, index, mscColor, 0);
+        colorBar(chart, index, mscColor, 0);                
         if (left < index - 1) {
             await quickSort(chart, array, left, index - 1);
             colorBar(chart, index-1, dftColor, 0);

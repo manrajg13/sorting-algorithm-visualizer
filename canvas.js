@@ -21,8 +21,11 @@ document.getElementById('shuffle').addEventListener('click', shuffleArray);
 document.getElementById('sort').addEventListener('click', sortArray);
 document.getElementById('size').addEventListener('input', resizeArray);
 document.getElementById('speed').addEventListener('input', setSpeed);
+document.getElementById('show-steps').addEventListener('click', setSort);
+document.getElementById('show-steps').addEventListener('click', growDiv);
 
 init();
+setSort();
 
 // create array of a given size colored white, destroy chart and
 // create new chart with new data
@@ -84,9 +87,34 @@ function setSpeed() {
 	speed = 2000 - this.value;
 }
 
+function growDiv() {
+    var growDiv = document.getElementById('steps-container');
+    console.log(growDiv.clientHeight);
+    if (growDiv.clientHeight) {
+      growDiv.style.height = 0;
+    } else {
+      var wrapper = document.querySelector('.measuringWrapper');
+      growDiv.style.height = (parseInt(wrapper.clientHeight) + 15).toString() + "px";
+    }
+document.getElementById("show-steps").innerHTML=document.getElementById("show-steps").innerHTML=='Show Steps'?'Hide Steps':'Show Steps';
+}
+
 function setSort() {
 	let selection = document.getElementById('algorithm-select');
+	let btn = document.getElementById('show-steps');
 	document.getElementById('algorithm-name').innerHTML = selection.options[selection.selectedIndex].text;
+
+	switch(selection.value) {
+	case "bubbleSort":
+		document.getElementById('step1').innerHTML = '\u2003for i := 0 to sizeOfArray:<br>' +
+													 '\u2003\u2003\u2003swapped = false';
+		document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for j := 0 to sizeOfArray - i - 1:';
+		document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003if array[j] > array[j+1]:<br>' +
+													 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swap (array[j], array[j+1])<br>' +
+													 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swapped = true';
+		document.getElementById('step4').innerHTML = '\u2003\u2003\u2003if swapped = false:<br>' +
+													 '\u2003\u2003\u2003\u2003\u2003break';
+	}
 }
 
 function getSpeed() {

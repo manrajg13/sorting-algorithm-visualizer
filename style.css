@@ -1,0 +1,65 @@
+html {
+	display: table;
+	margin: auto; 
+	background-color: #02040f;
+	font-family: "Dejavu", sans, mono;
+}
+
+.container {
+	margin-top: 150px; 
+	text-align: center;
+}
+
+.steps {
+	color: #ffffff;  
+	font-size: 14px; 
+	margin-bottom: -14px;
+}
+
+#algorithm-name {
+	color: #02040f;
+	background-color: white;
+	margin-bottom: 10px;
+	font-size: 17px;
+}
+
+#chart {
+	width: 600px;
+}
+
+#show-steps {
+	all: initial;
+	height: 23px;
+	font-family: "Dejavu", sans, mono;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 4px;
+	width: 600px;
+	background-color: white;
+	color: #02040f;
+	cursor: pointer;
+}
+
+#show-steps:hover {
+	background-color: #d1d1d1;
+	color: #02040f;
+}
+
+#size {
+	width: 60px;
+}
+
+#speed {
+	width:100px;
+}
+
+#steps-container {
+	text-align: left;
+	-moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    -webkit-transition: height .5s;
+    transition: height .5s;
+    height: 0;
+    overflow: hidden;
+}
