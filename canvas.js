@@ -1,4 +1,4 @@
-import {sleep, colorBar, swap, shuffle, setSort} from './utils.js';
+import {sleep, colorBar, swap, shuffle, growDiv, setSort} from './utils.js';
 import {bogoSort, bubbleSort, selectionSort, quickSort, insertionSort, isSorted} from './algorithms.js'
 
 // set default values for chart inputs
@@ -84,17 +84,6 @@ function resizeArray() {
 
 function setSpeed() {
 	speed = 2000 - this.value;
-}
-
-function growDiv() {
-    var growDiv = document.getElementById('steps-container');
-    console.log(growDiv.clientHeight);
-    if (growDiv.clientHeight) {
-      growDiv.style.height = 0;
-    } else {
-      growDiv.style.height = '180px';
-    }
-document.getElementById("show-steps").innerHTML=document.getElementById("show-steps").innerHTML=='Show Steps'?'Hide Steps':'Show Steps';
 }
 
 function getSpeed() {

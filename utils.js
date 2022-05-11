@@ -57,10 +57,22 @@ function shuffle(chart) {
 	shuffling = false;
 }
 
-function setSort() {
+function growDiv() {
+    let growDiv = document.getElementById('steps-container');
+    if (growDiv.clientHeight) {
+    	growDiv.style.height = 0;
+    } else {
+    	let wrapper = growDiv.querySelector('.measuringWrapper');
+      	growDiv.style.height = wrapper.clientHeight + 15 + "px";
+    }
+}
+
+async function setSort() {
 	let selection = document.getElementById('algorithm-select');
-	let btn = document.getElementById('show-steps');
 	document.getElementById('algorithm-name').innerHTML = selection.options[selection.selectedIndex].text;
+	
+	let growDiv = document.getElementById('steps-container');
+	let wrapper = growDiv.querySelector('.measuringWrapper');
 
 	switch(selection.value) {
 		case "bogoSort":
@@ -72,6 +84,7 @@ function setSort() {
 			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003else:<br>' +
 														 '\u2003\u2003\u2003\u2003\u2003sorted := false';
 			document.getElementById('step4').innerHTML = '';
+      		growDiv.style.height = wrapper.clientHeight + 15 + "px";
 			break;
 		case "bubbleSort":
 			document.getElementById('step1').innerHTML = '\u2003for i := 0 to sizeOfArray:<br>' +
@@ -82,8 +95,19 @@ function setSort() {
 														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swapped = true';
 			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003if swapped = false:<br>' +
 														 '\u2003\u2003\u2003\u2003\u2003break';
+			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+			break;
+		case "selectionSort":
+			document.getElementById('step1').innerHTML = '\u2003for i := 0 to sizeOfArray:<br>' +
+														 '\u2003\u2003\u2003min = i';
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for j := i + 1 to sizeOfArray:';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003if array[j] < min:<br>' + 
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003min = j';
+			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003if min != i:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003swap';
+			growDiv.style.height = wrapper.clientHeight + 15 + "px";
 			break;
 	}
 }
 
-export {sleep, colorStep, colorBar, swap, shuffle, setSort};
+export {sleep, colorStep, colorBar, swap, shuffle, growDiv, setSort};

@@ -56,15 +56,21 @@ async function selectionSort(chart, array) {
     for(let i = 0; i < array.length; i++) {
         let min = i;
         colorBar(chart, min, mscColor, 0);                  // color each outer iteration
+        colorStep(1);
+        await sleep(chart);
         for(let j = i+1; j < array.length; j++){
+            colorStep(2);
             await colorBar(chart, j, itrColor, 1);          // color each inner iteration going in reverse
             if(array[j] < array[min]) {
                 colorBar(chart, min, dftColor, 0);          // recolor min value
                 min=j;
                 colorBar(chart, min, mscColor, 0);
+                colorStep(3);
+                await sleep(chart);
             }
         }
         if (min != i) {
+            colorStep(4);
             await swap(chart, i, min);
             await sleep(chart);
         }
