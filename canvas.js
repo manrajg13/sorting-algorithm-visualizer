@@ -28,7 +28,7 @@ init();
 
 // create array of a given size colored white, destroy chart and
 // create new chart with new data
-function init() {
+async function init() {
 	array = [];
 	labels = [];
 	colors = [];
@@ -71,6 +71,7 @@ function init() {
 	};
 
 	chart = new Chart(ctx, config);
+	disableInteract(false);
 }
 
 function shuffleArray() {

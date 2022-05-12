@@ -7,6 +7,7 @@ html {
 
 .container {
 	margin-top: 150px; 
+	width: 500px;
 	text-align: center;
 }
 
@@ -23,12 +24,21 @@ html {
 	font-size: 15px;
 }
 
+#algorithm-select {
+	width: 115px;
+}
+
+#size {
+	width: 80px;
+}
+
+#speed {
+	width: 115px;
+}
 
 #show-steps {
 	all: initial;
-	height: 23px;
 	font-family: "Dejavu", sans, mono;
-	font-size: 15px;
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 4px;
@@ -41,14 +51,6 @@ html {
 #show-steps:hover {
 	background-color: #d1d1d1;
 	color: #02040f;
-}
-
-#size {
-	width: 60px;
-}
-
-#speed {
-	width:100px;
 }
 
 #steps-container {

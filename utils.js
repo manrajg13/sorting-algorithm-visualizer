@@ -9,7 +9,7 @@ function sleep (chart) {
 }
 
 function colorStep(step) {
-	for (let i = 1; i < 7; i++) {
+	for (let i = 1; i < 12; i++) {
 		document.getElementById("step" + i.toString()).style.backgroundColor = "#02040f";
     	document.getElementById("step" + i.toString()).style.color = "white";
 	}
@@ -76,37 +76,89 @@ async function setSort() {
 
 	switch(selection.value) {
 		case "bogoSort":
-			document.getElementById('step1').innerHTML = '\u2003while sorted = false:<br>' + 
-														 '\u2003\u2003\u2003shuffle array';
-			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003if array is sorted:<br>' +
-														 '\u2003\u2003\u2003\u2003\u2003sorted := true<br>' +
-														 '\u2003\u2003\u2003\u2003\u2003break';
-			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003else:<br>' +
-														 '\u2003\u2003\u2003\u2003\u2003sorted := false';
-			document.getElementById('step4').innerHTML = '';
-      		growDiv.style.height = wrapper.clientHeight + 15 + "px";
+			document.getElementById('step1').innerHTML = '\u2003bogoSort(array):<br>';
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003while sorted = false:<br>' + 
+														 '\u2003\u2003\u2003\u2003\u2003shuffle array';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003if array is sorted:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003sorted := true<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003break';
+			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003\u2003\u2003else:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003sorted := false';
+			for (let i = 5; i < 12; i++) {
+				document.getElementById("step" + i.toString()).innerHTML = '';
+			}
+      		if (growDiv.clientHeight) {
+      			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+      		}
 			break;
 		case "bubbleSort":
-			document.getElementById('step1').innerHTML = '\u2003for i := 0 to sizeOfArray:<br>' +
-														 '\u2003\u2003\u2003swapped = false';
-			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for j := 0 to sizeOfArray - i - 1:';
-			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003if array[j] > array[j+1]:<br>' +
-														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swap (array[j], array[j+1])<br>' +
-														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swapped = true';
-			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003if swapped = false:<br>' +
-														 '\u2003\u2003\u2003\u2003\u2003break';
-			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+			document.getElementById('step1').innerHTML = '\u2003bubbleSort (array):<br>';
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for i := 0 to array.length:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003swapped = false';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003for j := 0 to array.length - i - 1:';
+			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003\u2003\u2003\u2003\u2003if array[j] > array[j+1]:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003swap (array[j], array[j+1])<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003swapped = true';
+			document.getElementById('step5').innerHTML = '\u2003\u2003\u2003\u2003\u2003if swapped = false:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003break';
+			for (let i = 6; i < 12; i++) {
+				document.getElementById("step" + i.toString()).innerHTML = '';
+			}
+			if (growDiv.clientHeight) {
+      			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+      		}
 			break;
 		case "selectionSort":
-			document.getElementById('step1').innerHTML = '\u2003for i := 0 to sizeOfArray:<br>' +
-														 '\u2003\u2003\u2003min = i';
-			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for j := i + 1 to sizeOfArray:';
-			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003if array[j] < min:<br>' + 
-														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003min = j';
-			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003if min != i:<br>' +
-														 '\u2003\u2003\u2003\u2003\u2003swap';
-			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+			document.getElementById('step1').innerHTML = '\u2003selectionSort (array):<br>' ;
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for i := 0 to array.length:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003min = i';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003for j := i + 1 to array.length:';
+			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003\u2003\u2003\u2003\u2003if array[j] < min:<br>' + 
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003min = j';
+			document.getElementById('step5').innerHTML = '\u2003\u2003\u2003\u2003\u2003if min != i:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swap (array[i], array[min])';
+			for (let i = 6; i < 12; i++) {
+				document.getElementById("step" + i.toString()).innerHTML = '';
+			}
+			if (growDiv.clientHeight) {
+      			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+      		}
 			break;
+		case "quickSort":
+			document.getElementById('step1').innerHTML = '\u2003quickSort (array, left, right):<br>';
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003if array.length > 1:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003index = partition(array, left, right);';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003if left < index-1:\u2003\u2003quickSort(array, left, index - 1)<br>';
+			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003\u2003\u2003if index < right: \u2003\u2003quickSort(array, index, right)';
+			document.getElementById('step5').innerHTML = '<br>\u2003partition (array, left, right):';
+			document.getElementById('step6').innerHTML = '\u2003\u2003\u2003pivotIndex = floor((right + left) / 2)'
+			document.getElementById('step7').innerHTML = '\u2003\u2003\u2003while left <= array[pivotIndex]:<br>';
+			document.getElementById('step8').innerHTML = '\u2003\u2003\u2003\u2003\u2003while array[left] < array[pivot]: \u2003\u2003\u2000left++';
+			document.getElementById('step9').innerHTML = '\u2003\u2003\u2003\u2003\u2003while array[right] > array[pivot]:\u2003\u2003right--';
+			document.getElementById('step10').innerHTML = '\u2003\u2003\u2003\u2003\u2003if(left < right):<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003swap (array[left++], array[right--]);';
+			document.getElementById('step11').innerHTML = '\u2003\u2003\u2003return left';
+
+			if (growDiv.clientHeight) {
+      			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+      		}
+      		break;
+      	case "insertionSort":
+      		document.getElementById('step1').innerHTML = '\u2003insertionSort (array):<br>';
+			document.getElementById('step2').innerHTML = '\u2003\u2003\u2003for i := 0 to array.length:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003j := i';
+			document.getElementById('step3').innerHTML = '\u2003\u2003\u2003\u2003\u2003while j > 0:<br>';
+			document.getElementById('step4').innerHTML = '\u2003\u2003\u2003\u2003\u2003\u2003\u2003if array[j] < array[j - 1]:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003swap (array[j], array[j - 1])';
+			document.getElementById('step5').innerHTML = '\u2003\u2003\u2003\u2003\u2003\u2003\u2003else:<br>' +
+														 '\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003j--';
+			for (let i = 6; i < 12; i++) {
+				document.getElementById("step" + i.toString()).innerHTML = '';
+			}
+			if (growDiv.clientHeight) {
+      			growDiv.style.height = wrapper.clientHeight + 15 + "px";
+      		}
+
 	}
 }
 
