@@ -1,3 +1,3 @@
 # Sorting-Algorithm-Visualizer
 
-https://gillmanraj.com/Sort/sort
+https://gillmanraj.com/sort
