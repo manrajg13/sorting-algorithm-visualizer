@@ -142,6 +142,7 @@ async function insertionSort(chart, array) {
             }
             else{
                 j--;
+                await colorBar(chart, j-1, mscColor, 1);
             }
         }
         colorBar(chart, i, dftColor, 0);
