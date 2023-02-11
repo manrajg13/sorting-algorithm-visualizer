@@ -3,7 +3,7 @@
   <br>
 </h1>
 
-<h4 align="center">A visualization of sorting algorithms with pseudocode tracing, <a href="https://gillmanraj.com/sort">check it out here.</a><h4>
+<h4 align="center">A visualization of sorting algorithms with pseudocode tracing, <a href="https://gillmanraj.com/sort.html">check it out here.</a><h4>
 
 <h4 align="center"> 
   
